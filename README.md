@@ -1,2 +1,2 @@
 # nirs
-![Screenshot](Screenshot Version 1.png)
+![Screenshot](ScreenshotV1.png)
