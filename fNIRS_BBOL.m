@@ -248,96 +248,357 @@ while ~get(handles.bt_stop, 'Value')
         ch13IR_array = [ch13IR_array ch13IR];
         
         %% Plot Data on Time Series Charts in GUI
+        % Using set() function to update GUI plots in real time effectively
         
         % Channel 1 Time Series
-        axes(handles.axes_ch1);
-        plot(time_array, ch1R_array, 'r', time_array, ch1IR_array, 'k');
-        if length(time_array) > 60
-            set(handles.axes_ch1, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch1;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch1R_array, 'r', time_array, ch1IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch1R_array, 'r', time_array, ch1IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch1R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch1IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 2 Time Series
-        axes(handles.axes_ch2);
-        plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch2, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch2;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch2R_array, 'r', time_array, ch2IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch2R_array, 'r', time_array, ch2IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch2R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch2IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 3 Time Series
-        axes(handles.axes_ch3);
-        plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch3, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch3;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch3R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch3IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 4 Time Series
-        axes(handles.axes_ch4);
-        plot(time_array, ch4R_array, 'r', time_array, ch4IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch4, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch4;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch4R_array, 'r', time_array, ch4IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch4R_array, 'r', time_array, ch4IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch4R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch4IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 5 Time Series
-        axes(handles.axes_ch5);
-        plot(time_array, ch5R_array, 'r', time_array, ch5IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch5, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch5;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch5R_array, 'r', time_array, ch5IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch5R_array, 'r', time_array, ch5IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch5R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch5IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 6 Time Series
-        axes(handles.axes_ch6);
-        plot(time_array, ch6R_array, 'r', time_array, ch6IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch6, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-        end
+        thisax = handles.axes_ch6;
+        plot2handle = get(thisax, 'UserData');
         
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch6R_array, 'r', time_array, ch6IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch6R_array, 'r', time_array, ch6IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch6R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch6IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
+        end
+                
         % Channel 7 Time Series
-        axes(handles.axes_ch7);
-        plot(time_array, ch7R_array, 'r', time_array, ch7IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch7, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch7;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch7R_array, 'r', time_array, ch7IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch7R_array, 'r', time_array, ch7IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch7R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch7IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 8 Time Series
-        axes(handles.axes_ch8);
-        plot(time_array, ch8R_array, 'r', time_array, ch8IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch8, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-        end   
+        thisax = handles.axes_ch8;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch8R_array, 'r', time_array, ch8IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch8R_array, 'r', time_array, ch8IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch8R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch8IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
+        end
         
         % Channel 9 Time Series
-        axes(handles.axes_ch9);
-        plot(time_array, ch9R_array, 'r', time_array, ch9IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch9, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch9;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch9R_array, 'r', time_array, ch9IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch9R_array, 'r', time_array, ch9IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch9R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch9IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 10 Time Series
-        axes(handles.axes_ch10);
-        plot(time_array, ch10R_array, 'r', time_array, ch10IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch10, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch10;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch10R_array, 'r', time_array, ch10IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch10R_array, 'r', time_array, ch10IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch10R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch10IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 11 Time Series
-        axes(handles.axes_ch11);
-        plot(time_array, ch11R_array, 'r', time_array, ch11IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch11, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch11;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch11R_array, 'r', time_array, ch11IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch11R_array, 'r', time_array, ch11IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch11R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch11IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 12 Time Series
-        axes(handles.axes_ch12);
-        plot(time_array, ch12R_array, 'r', time_array, ch12IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch12, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch12;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch12R_array, 'r', time_array, ch12IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch12R_array, 'r', time_array, ch12IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch12R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch12IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 13 Time Series
-        axes(handles.axes_ch13);
-        plot(time_array, ch13R_array, 'r', time_array, ch13IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch13, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch13;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch13R_array, 'r', time_array, ch13IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch13R_array, 'r', time_array, ch13IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch13R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch13IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Aggregate data for image display
@@ -346,8 +607,7 @@ while ~get(handles.bt_stop, 'Value')
        
         %% Prepare Heatmap Display in Images in GUI
         
-        renderImage(channel_arrayR, handles.axes_HbTotal);
-        renderImage(channel_arrayIR, handles.axes_HbO2);
+        renderImage(channel_arrayR, handles.axes_HbO2);
         renderImage(channel_arrayIR, handles.axes_HHb);
         
         drawnow();

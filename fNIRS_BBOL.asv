@@ -157,11 +157,9 @@ while ~get(handles.bt_stop, 'Value')
         set(handles.streamData,'enable','off');
         set(handles.bt_stop,'enable','on');
         
-        %% BLUETOOTH DATA CONNECTION LOGIC
-        
-        %% BLUETOOTH DATA PARSING LOGIC
-        
-        %% GUI GRAPH UPDATE LOGIC
+        %% DATA ACQUISITION 
+        % TODO: Add bluetooth data acquisiton and parsing..
+        % Prototyped with a random number generator
         
         % Define fNIR Infrared Data Here
         ch1R = rand;
@@ -193,7 +191,8 @@ while ~get(handles.bt_stop, 'Value')
         ch12IR = rand;
         ch13IR = rand;
         
-        % Append data array
+        %% DATA MANAGEMENT
+        
         time_array = [time_array toc];
         
         % Channel 1 Array
@@ -248,104 +247,217 @@ while ~get(handles.bt_stop, 'Value')
         ch13R_array = [ch13R_array ch13R];
         ch13IR_array = [ch13IR_array ch13IR];
         
-        % Plot Data on Time Series Charts
+        %% Plot Data on Time Series Charts in GUI
+        % Using set() function to update GUI plots in real time effectively
         
         % Channel 1 Time Series
-        axes(handles.axes_ch1);
-        plot(time_array, ch1R_array, 'r', time_array, ch1IR_array, 'k
-        if length(time_array) > 60
-            set(handles.axes_ch1, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch1;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch1R_array, 'r', time_array, ch1IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch1R_array, 'r', time_array, ch1IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch1R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch1IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 2 Time Series
-        axes(handles.axes_ch2);
-        plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch2, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch2;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch2R_array, 'r', time_array, ch2IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch2R_array, 'r', time_array, ch2IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch2R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch2IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 3 Time Series
-        axes(handles.axes_ch3);
-        plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch3, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch3;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch3R_array, 'r', time_array, ch3IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch3R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch3IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 4 Time Series
-        axes(handles.axes_ch4);
-        plot(time_array, ch4R_array, 'r', time_array, ch4IR_array, 'k-');
-        if length(time_array) > 60
-            set(handles.axes_ch4, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
+        thisax = handles.axes_ch4;
+        plot2handle = get(thisax, 'UserData');
+        
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch4R_array, 'r', time_array, ch4IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch4R_array, 'r', time_array, ch4IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch4R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch4IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
         end
         
         % Channel 5 Time Series
-        axes(handles.axes_ch5);
-        plot(time_array, ch5R_array, 'r', time_array, ch5IR_array, 'k-');
+        thisax = handles.axes_ch5;
+        plot2handle = get(thisax, 'UserData');
         
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch5R_array, 'r', time_array, ch5IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch5R_array, 'r', time_array, ch5IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch5R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch5IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
+        end
         
         % Channel 6 Time Series
-        axes(handles.axes_ch6);
-        plot(time_array, ch6R_array, 'r', time_array, ch6IR_array, 'k-');
+        thisax = handles.axes_ch6;
+        plot2handle = get(thisax, 'UserData');
         
-        % Channel 7 Time Series
-        axes(handles.axes_ch7);
-        plot(time_array, ch7R_array, 'r', time_array, ch7IR_array, 'k-');
+        if (isempty(plot2handle))
+            
+              plot(time_array, ch5R_array, 'r', time_array, ch6IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
 
-        % Channel 8 Time Series
-        axes(handles.axes_ch8);
-        plot(time_array, ch8R_array, 'r', time_array, ch8IR_array, 'k-');   
+
+              hold(thisax, 'on');
+
+              plot2handle = plot(time_array, ch5R_array, 'r', time_array, ch5IR_array, 'k', 'linewidth', 2, 'Parent', thisax);
+              % Plotting the signal over the threshold line
+              hold(thisax, 'off');
+              set(thisax, 'UserData', plot2handle);
+
+        else
+            
+              set(plot2handle(1), 'XData', time_array, 'YData', ch5R_array);
+              set(plot2handle(2), 'XData', time_array, 'YData', ch5IR_array);
+                            
+              if length(time_array) > 30
+                 set(thisax, 'xlim', [time_array((length(time_array) - 20)) time_array(length(time_array))]);
+              end
+
+        end
         
-        % Channel 8 Time Series
-        axes(handles.axes_ch8);
-        plot(time_array, ch8R_array, 'r', time_array, ch8IR_array, 'k-');
-        
-        % Channel 9 Time Series
-        axes(handles.axes_ch9);
-        plot(time_array, ch9R_array, 'r', time_array, ch9IR_array, 'k-');
-        
-        % Channel 10 Time Series
-        axes(handles.axes_ch10);
-        plot(time_array, ch10R_array, 'r', time_array, ch10IR_array, 'k-');
-        
-        % Channel 11 Time Series
-        axes(handles.axes_ch11);
-        plot(time_array, ch11R_array, 'r', time_array, ch11IR_array, 'k-');
-        
-        % Channel 12 Time Series
-        axes(handles.axes_ch12);
-        plot(time_array, ch12R_array, 'r', time_array, ch12IR_array, 'k-');
-        
-        % Channel 13 Time Series
-        axes(handles.axes_ch13);
-        plot(time_array, ch13R_array, 'r', time_array, ch13IR_array, 'k-');
-        
-        % Move Plot Along X-Axis
-        if length(time_array) > 60
-            set(handles.axes_ch1, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch2, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch3, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch4, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch5, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch6, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch7, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch8, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch9, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch10, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch11, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch12, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-            set(handles.axes_ch13, 'xlim', [time_array((length(time_array) - 50)) time_array(length(time_array))]);
-         end
         
         % Aggregate data for image display
         channel_arrayR = [ch1R, ch2R, ch3R, ch4R, ch5R, ch6R, ch7R, ch8R, ch9R, ch10R, ch11R, ch12R, ch13R];
         channel_arrayIR = [ch1IR, ch2IR, ch3IR, ch4IR, ch5IR, ch6IR, ch7IR, ch8IR, ch9IR, ch10IR, ch11IR, ch12IR, ch13IR];
+       
+        %% Prepare Heatmap Display in Images in GUI
         
-        % Prepare Display Image
-        renderImage(channel_arrayR, handles.axes_HbTotal);
-        renderImage(channel_arrayIR, handles.axes_HbO2);
+        renderImage(channel_arrayR, handles.axes_HbO2);
         renderImage(channel_arrayIR, handles.axes_HHb);
         
         drawnow();
+        
+        %% Data Dumping
+        % TODO
+        
+        if length(time_array) > 300
+            ch1R_array = ch1R_array((end-100):end);
+            ch1IR_array = ch1IR_array((end-100):end);
+            ch2R_array = ch2R_array((end-100):end);
+            ch2IR_array = ch2IR_array((end-100):end);
+            ch3R_array = ch3R_array((end-100):end);
+            ch3IR_array = ch3IR_array((end-100):end);
+            ch4R_array = ch4R_array((end-100):end);
+            ch4IR_array = ch4IR_array((end-100):end);
+            ch5R_array = ch5R_array((end-100):end);
+            ch5IR_array = ch5IR_array((end-100):end);
+            ch6R_array = ch6R_array((end-100):end);
+            ch6IR_array = ch6IR_array((end-100):end);
+            ch7R_array = ch7R_array((end-100):end);
+            ch7IR_array = ch7IR_array((end-100):end);
+            ch8R_array = ch8R_array((end-100):end);
+            ch8IR_array = ch8IR_array((end-100):end);
+            ch9R_array = ch9R_array((end-100):end);
+            ch9IR_array = ch9IR_array((end-100):end);
+            ch10R_array = ch10R_array((end-100):end);
+            ch10IR_array = ch10IR_array((end-100):end);
+            ch11R_array = ch11R_array((end-100):end);
+            ch11IR_array = ch11IR_array((end-100):end);
+            ch12R_array = ch12R_array((end-100):end);
+            ch12IR_array = ch12IR_array((end-100):end);
+            ch13R_array = ch13R_array((end-100):end);
+            ch13IR_array = ch13IR_array((end-100):end);
+        end
+        
+        %% CSV File Writing
+        % TODO
 
     else
         set(handles.streamData,'enable','on');
